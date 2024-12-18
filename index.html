@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UKM Citation Generator</title>
+  <style>
+footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+footer p {
+  margin: 0;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px dashed #007BFF;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>UKM Citation Generator</h1>
+
+  <!-- Select Citation Type -->
+  <label for="citationType">Citation Type:</label>
+  <select id="citationType" onchange="toggleFields()">
+    <option value="book">Book</option>
+    <option value="chapter">Chapter in a Book</option>
+    <option value="journal">Journal</option>
+    <option value="website">Website</option>
+    <option value="doi">DOI</option>
+  </select>
+
+  <!-- Common Fields -->
+  <label for="author">Author's Surname, Forename:</label>
+  <input type="text" id="author" placeholder="Enter author's name (e.g., Ladika, Awaluddin Ryrito)">
+
+  <label for="year">Year of Publication:</label>
+  <input type="text" id="year" placeholder="Enter publication year (e.g., 2018)">
+
+  <label for="title">Title:</label>
+  <input type="text" id="title" placeholder="Enter title (e.g., The Analysis of Figurative Language)">
+
+  <!-- Specific Fields -->
+  <div id="bookFields" class="citationFields">
+    <label for="location">Location:</label>
+    <input type="text" id="location" placeholder="Enter location (e.g., Indonesia)">
+
+    <label for="publisher">Publisher:</label>
+    <input type="text" id="publisher" placeholder="Enter publisher (e.g., Jambi University)">
+  </div>
+
+  <div id="chapterFields" class="citationFields" style="display: none;">
+    <label for="editor">Editor(s):</label>
+    <input type="text" id="editor" placeholder="Enter editor(s) (e.g., Shook, John R. & Margolis, Joseph)">
+
+    <label for="chapterPages">Chapter Pages:</label>
+    <input type="text" id="chapterPages" placeholder="Enter chapter pages (e.g., 1-10)">
+
+    <label for="bookTitle">Book Title:</label>
+    <input type="text" id="bookTitle" placeholder="Enter book title (e.g., A Companion to Pragmatism)">
+
+    <label for="chapterLocation">Location:</label>
+    <input type="text" id="chapterLocation" placeholder="Enter location (e.g., Malden, MA)">
+
+    <label for="chapterPublisher">Publisher:</label>
+    <input type="text" id="chapterPublisher" placeholder="Enter publisher (e.g., Blackwell Publishing)">
+  </div>
+
+  <div id="journalFields" class="citationFields" style="display: none;">
+    <label for="journalName">Journal Name:</label>
+    <input type="text" id="journalName" placeholder="Enter journal name (e.g., Journal for the Scientific Study of Religion)">
+
+    <label for="volume">Volume:</label>
+    <input type="text" id="volume" placeholder="Enter volume (e.g., 39)">
+
+    <label for="issue">Issue Number:</label>
+    <input type="text" id="issue" placeholder="Enter issue number (e.g., 1)">
+
+    <label for="journalPages">Journal Pages:</label>
+    <input type="text" id="journalPages" placeholder="Enter page range (e.g., 32-46)">
+  </div>
+
+  <div id="websiteFields" class="citationFields" style="display: none;">
+    <label for="url">URL:</label>
+    <input type="text" id="url" placeholder="Enter full website address (e.g., https://example.com)">
+
+    <label for="retrievalDate">Retrieval Date:</label>
+    <input type="text" id="retrievalDate" placeholder="Enter retrieval date (e.g., 8th August 2018)">
+  </div>
+
+  <div id="doiFields" class="citationFields" style="display: none;">
+    <label for="doi">DOI:</label>
+    <input type="text" id="doi" placeholder="Enter DOI (e.g., 10.1016/j.sbspro.2012.11.254)">
+  </div>
+
+  <!-- Buttons -->
+  <button onclick="generateCitation()">Generate Citation</button>
+
+  <!-- Output -->
+  <div class="output" id="citationOutput"></div>
+  </div>
+  <!-- Footer Remark -->
+  <footer>
+    <p>This citation generator is still under construction and made by Nadia Zakaria.</p>
+  </footer>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
